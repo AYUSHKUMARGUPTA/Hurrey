@@ -1,0 +1,25 @@
+.page-content {
+  /* margin-top: 10px; */
+  background: #f4f4f4;
+  padding: 10px 10px 10px 10px;
+  position: relative;
+}
+
+.app-background {
+  background-color: #f4f4f4 !important;
+}
+
+.main-content {
+  min-height: 100vh !important;
+  font-family: 'EYInterstate', sans-serif !important;
+  position: relative;
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(221, 221, 221);
+  -o-border-image: initial;
+  border-image: initial;
+  border-radius: 4px;
+  margin-bottom: 7%;
+}
