@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.k-grid-header, .k-grid-toolbar, .k-grouping-header, .k-grid-add-row, .k-grid-footer {
+  color: white !important;
+  background-color: black !important;
+  border-color: white;
+}
+.k-button {
+  border-color: white;
+  color: white;
+  background-color: black;
+  background-image: none !important;
+}
+.k-grid-pager {
+  padding: 8px;
+  border-width: 1px 0 0;
+  border-color: inherit;
+  font-size: inherit;
+  color: white;
+}
+.k-pager-wrap {
+  border-color: rgba(0, 0, 0, 0.08);
+  color: white;
+  background-color: black;
+}
+.k-pager-numbers .k-link.k-state-selected {
+  color: white;
+  background-color: black;
+}
+.k-pager-numbers .k-link {
+  color: white;
+}

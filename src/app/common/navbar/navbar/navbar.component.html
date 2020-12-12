@@ -1,1 +1,40 @@
-<p>navbar works!</p>
+<div id="wrapper" [ngClass]="ref.click === true ? 'toggled' : ''">
+  <div [ngStyle]="{ display: ref.click === true ? 'block' : 'none' }"></div>
+
+  <!-- Sidebar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+    <ul class="nav sidebar-nav">
+      <li class="sidebar-brand" style="margin-bottom: 20%;">
+        <!-- <a routerLink="/home"> QSHSTA Dev Site </a> -->
+        <img src = "https://cdn4.vectorstock.com/i/1000x1000/25/33/executive-businessman-profile-isolated-icon-vector-9692533.jpg" alt="profile pic" style="height: 92%;
+        margin-left: 33%;
+        margin-top: 5%;">
+        <!-- <a routerLink="#">user</a> -->
+      </li>
+      <li>
+        <a routerLink="#">Dashboard</a>
+      </li>
+
+      <li>
+        <a routerLink="#">Account</a>
+      </li>
+
+      <li>
+        <a routerLink="#">Syllabus</a>
+      </li>
+      <li>
+        <a routerLink="#">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <button appSidebar #ref="appSidebar" type="button" class="hamburger is-closed" data-toggle="offcanvas">
+      <span class="hamb-top"></span>
+      <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
+    </button>
+  </div>
+</div>
+
