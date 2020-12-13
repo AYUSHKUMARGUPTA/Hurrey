@@ -1,1 +1,96 @@
-<p>dashboard works!</p>
+<div class="container" style="padding: 5%;padding-top: 0%;">
+    <div class="row">
+        <kendo-grid [resizable]="true" [data]="gridView" [height]="400" [filter]="filter" filterable="menu"
+            [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [group]="state.group"
+            [sortable]="{ mode:'multiple' }" [pageable]="{
+            buttonCount: 3,
+            info: true,
+            pageSizes:[10, 25, 50],
+            previousNext: true,
+            type: 'numeric'
+        }" (dataStateChange)="dataStateChange($event)" class="task-grid">
+            <ng-template kendoGridToolbarTemplate>
+                <button (click)='toggleIssueModal(0,"New")' style="background: black;">Add New</button>
+                <button kendoGridExcelCommand icon="file-excel">Export to Excel</button>
+            </ng-template>
+            <kendo-grid-column field="schoolName" title="School Name" width="100"
+                [style]="{'color': '#155cb4','text-decoration':'underline','font-weight':'bold'}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <a (click)='toggleIssueModal(dataItem.id,"View")'>{{dataItem.schoolName}}</a>
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column field="board" title="Board Name" width="150">
+            </kendo-grid-column>
+            <kendo-grid-column field="medium" title="Medium" width="150">
+            </kendo-grid-column>
+
+            <kendo-grid-column field="class" title="Class" width="150">
+            </kendo-grid-column>
+            <kendo-grid-command-column width="150" title="Action" *ngIf="showAction">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    <a class="actionButton" kendoGridEditCommand [primary]="true"
+                        (click)='toggleIssueModal(dataItem.id,"Edit")'><i class="fa fa-edit" aria-hidden="true"></i></a>
+                    <a class="actionButton" kendoGridEditCommand [primary]="true" (click)='deleteItems(dataItem.id)'><i
+                            class="fa fa-trash" aria-hidden="true"></i></a>
+                </ng-template>
+            </kendo-grid-command-column>
+
+            <kendo-grid-excel fileName="School.xlsx" [fetchData]="allData"></kendo-grid-excel>
+        </kendo-grid>
+        <!-- The Modal -->
+        <div class="modal show modal-custom" role="dialog" id="myModal" *ngIf="showModalFlag">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Details</h4>
+                        <button type="button" class="close" (click)="hideModal()">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="schoolName">School Name</label><span class="asterisk">*</span>
+                                    <input class="form-control" type="text" name="schoolName" id="schoolName"
+                                        [(ngModel)]="dashBoard.schoolName" [disabled]="readOnly">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="board">Board Name</label><span class="asterisk">*</span>
+                                    <input class="form-control" type="text" name="board" id="board"
+                                        [(ngModel)]="dashBoard.board" [disabled]="readOnly">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="medium">Medium Name</label><span class="asterisk">*</span>
+                                    <input class="form-control" type="text" name="medium" id="medium"
+                                        [(ngModel)]="dashBoard.medium" [disabled]="readOnly">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="class">Class Name</label><span class="asterisk">*</span>
+                                    <input class="form-control" type="text" name="class" id="class"
+                                        [(ngModel)]="dashBoard.class" [disabled]="readOnly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer" *ngIf="isView">
+                        <button type="button" *ngIf="showSave" class="btn btn-primary"
+                            (click)="saveData()">Save</button>
+                        <button type="button" *ngIf="!showSave" class="btn btn-primary"
+                            (click)="updateData(dashBoard.id)">Update</button>
+                        <button type="button" class="btn btn-danger" (click)="hideModal()">Close</button>
+                        <!-- this button is hidden, used to close from typescript -->
+                        <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

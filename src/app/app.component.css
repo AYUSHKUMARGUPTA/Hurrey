@@ -23,3 +23,19 @@
   border-radius: 4px;
   margin-bottom: 7%;
 }
+.xyz{
+  width:30%;
+  height:50%;
+  position: fixed;
+  background-color: rgba(19, 221, 221, 0.618);
+  top: 40%;
+  left: 40%;
+  margin-top: -100px;
+  margin-left: -100px;
+  border-radius: 4%;
+  box-shadow: 5px 10px #888888;
+}
+.container-fluid{
+    background-color: aqua;
+    padding: 0 !important;
+}

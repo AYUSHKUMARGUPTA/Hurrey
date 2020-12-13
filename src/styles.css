@@ -1,5 +1,11 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
+html, body {
+  height: 100%;
+}
+.container-fluid{
+  height: 100%;
+}
 .k-grid-header, .k-grid-toolbar, .k-grouping-header, .k-grid-add-row, .k-grid-footer {
   color: white !important;
   background-color: black !important;
@@ -8,7 +14,7 @@
 .k-button {
   border-color: white;
   color: white;
-  background-color: black;
+  background-color: green;
   background-image: none !important;
 }
 .k-grid-pager {
@@ -29,4 +35,7 @@
 }
 .k-pager-numbers .k-link {
   color: white;
+}
+.k-pager-sizes .k-dropdown, .k-pager-sizes .k-dropdowntree, .k-pager-sizes > select {
+  background: black;
 }

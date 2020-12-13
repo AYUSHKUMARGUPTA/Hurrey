@@ -1,14 +1,41 @@
-<app-navbar></app-navbar>
-<div class="container-fluid">
+<div class="container-fluid p-0" *ngIf="loginFlag">
+  <div class="card xyz">
+    <div class="card-header" style="text-align: center;">
+      <h1>Login</h1>
+    </div>
+    <hr style="border-color: black;">
+    <div class="card-body" style="text-align: center;">
+      <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username" id="username" [(ngModel)]="login.username">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password" id="password" [(ngModel)]="login.password">
+            <button style="margin-top: 12px;" type="submit" class="btn" (click)="submit()">Login</button>
+            <p>Username:- A</p>
+            <p>Password:- A</p>
+          </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-navbar *ngIf="!loginFlag"></app-navbar>
+<div class="container-fluid" *ngIf="!loginFlag">
   <div class="page-content main-content">
     <div class="card card-default">
-
-      <h3 class="card-header text-center" style="font-size: 2vw;"><b>Test</b>
-      </h3>
       <div class="card-body">
-      <router-outlet></router-outlet>
-    </div>
+        <router-outlet></router-outlet>
+      </div>
     </div>
 
-    </div>
-    </div>
+  </div>
+</div>
